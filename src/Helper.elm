@@ -3,81 +3,81 @@ module Helper exposing (..)
 import Html exposing (Html, div, h1, li, text, ul)
 
 
-add2 : Int -> Int -> Int
-add2 int1 int2 =
-    int1 + int2
+sumarDos : Int -> Int -> Int
+sumarDos primerNumero segundoNumero =
+    primerNumero + segundoNumero
 
 
-add3 : Float -> Float -> Float -> Float
-add3 float1 float2 float3 =
-    float1 + float2 + float3
+sumarTres : Float -> Float -> Float -> Float
+sumarTres a b c =
+    a + b + c
 
 
-calc : Int -> Int -> (Int -> Int -> Int) -> Int
-calc int1 int2 operator =
-    operator int1 int2
+ejecutarOperacion : Int -> Int -> (Int -> Int -> Int) -> Int
+ejecutarOperacion n1 n2 operacion =
+    operacion n1 n2
 
 
-type alias Language =
-    { name : String
-    , releaseYear : Int
-    , currentVersion : String
+type alias Lenguaje =
+    { nombre : String
+    , añoLanzamiento : Int
+    , versionActual : String
     }
 
 
-languageNames : List Language -> List String
-languageNames languages =
-    List.map .name languages
+obtenerNombres : List Lenguaje -> List String
+obtenerNombres listaLenguajes =
+    List.map .nombre listaLenguajes
 
 
-type alias User =
-    { name : String
-    , uType : String
+type alias Usuario =
+    { nombre : String
+    , rol : String
     }
 
 
-onlyStudents : List User -> List String
-onlyStudents users =
+soloEstudiantes : List Usuario -> List String
+soloEstudiantes listaUsuarios =
     List.map
-        (\user ->
-            case user.uType of
+        (\usuario ->
+            case usuario.rol of
                 "Student" ->
-                    user.name
+                    usuario.nombre
 
                 _ ->
                     ""
         )
-        users
+        listaUsuarios
 
 
-type alias Videogame =
-    { title : String
-    , releaseYear : Int
-    , available : Bool
-    , downloads : Int
-    , genres : List String
+type alias Videojuego =
+    { titulo : String
+    , año : Int
+    , disponible : Bool
+    , descargas : Int
+    , generos : List String
     }
 
 
-getVideogameGenres : List Videogame -> List (List String)
-getVideogameGenres videogames =
-    List.map .genres videogames
+obtenerGeneros : List Videojuego -> List (List String)
+obtenerGeneros listaJuegos =
+    List.map .generos listaJuegos
 
 
-type alias Computer =
-    { ram : String
-    , model : String
-    , brand : String
-    , screenSize : String
+type alias Computadora =
+    { memoriaRam : String
+    , modelo : String
+    , marca : String
+    , tamañoPantalla : String
     }
 
 
-myLaptop : Computer
-myLaptop =
-    { ram = "16GB"
-    , model = "Vivobook"
-    , brand = "ASUS"
-    , screenSize = "15in"
+miPortatil : Computadora
+miPortatil =
+    { memoriaRam = "16GB"
+    , modelo = "Vivobook"
+    , marca = "ASUS"
+    , tamañoPantalla = "15in"
     }
 
 
@@ -85,20 +85,20 @@ main : Html msg
 main =
     div
         []
-        [ h1 [] [ text "My laptop" ]
+        [ h1 [] [ text "Mi Computadora" ]
         , div []
             [ ul []
                 [ li []
-                    [ text ("Ram: " ++ myLaptop.ram)
+                    [ text ("RAM: " ++ miPortatil.memoriaRam)
                     ]
                 , li []
-                    [ text ("Modelo: " ++ myLaptop.model)
+                    [ text ("Modelo: " ++ miPortatil.modelo)
                     ]
                 , li []
-                    [ text ("Marca: " ++ myLaptop.brand)
+                    [ text ("Marca: " ++ miPortatil.marca)
                     ]
                 , li []
-                    [ text ("Pulgadas: " ++ myLaptop.screenSize)
+                    [ text ("Pantalla: " ++ miPortatil.tamañoPantalla)
                     ]
                 ]
             ]
