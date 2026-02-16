@@ -40,9 +40,9 @@ onlyStudents : List User -> List String
 onlyStudents users =
     List.map
         (\user ->
-            case .uType user of
+            case user.uType of
                 "Student" ->
-                    .name user
+                    user.name
 
                 _ ->
                     ""
@@ -89,16 +89,16 @@ main =
         , div []
             [ ul []
                 [ li []
-                    [ text ("Ram: " ++ .ram myLaptop)
+                    [ text ("Ram: " ++ myLaptop.ram)
                     ]
                 , li []
-                    [ text ("Modelo: " ++ .model myLaptop)
+                    [ text ("Modelo: " ++ myLaptop.model)
                     ]
                 , li []
-                    [ text ("Marca: " ++ .brand myLaptop)
+                    [ text ("Marca: " ++ myLaptop.brand)
                     ]
                 , li []
-                    [ text ("Pulgadas: " ++ .screenSize myLaptop)
+                    [ text ("Pulgadas: " ++ myLaptop.screenSize)
                     ]
                 ]
             ]
